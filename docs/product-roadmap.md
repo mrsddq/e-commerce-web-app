@@ -2,17 +2,20 @@
 
 ## Current State
 
-- React storefront app scaffold
-- product listing UI foundation
-- buildable package metadata
+- React storefront with a finished homepage experience
+- static product catalog with category metadata, prices, ratings, and images
+- client-side search
+- cart count and total state
+- responsive product cards
+- buildable package metadata and CI
 
 ## Next Product Features
 
-- product catalog data model
-- cart state management
-- checkout flow mock
+- product detail pages
+- cart drawer with quantity updates
+- checkout flow mock with order summary
 - responsive product detail pages
-- search and category filters
+- category filter controls
 - deployed demo link
 
 ## Portfolio Proof Needed

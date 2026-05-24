@@ -1,18 +1,39 @@
 import React from "react";
 import "./Home.css";
 
-function Home() {
+function Home({ products, onAddToCart }) {
   return (
-    <div className="home">
-      <div className="home__container">
-        <img
-          className="home__image"
-          src="https://images-eu.ssl-images-amazon.com/images/G/02/digital/video/merch2016/Hero/Covid19/Generic/GWBleedingHero_ENG_COVIDUPDATE__XSite_1500x600_PV_en-GB._CB428684220_.jpg"
-          alt=""
-        />
-      </div>
-    </div>
-    );
-};
+    <main className="home">
+      <section className="home__hero" aria-labelledby="hero-title">
+        <div>
+          <p className="home__eyebrow">Curated desk, travel, and audio gear</p>
+          <h1 id="hero-title">A compact React storefront with working cart state.</h1>
+          <p>
+            Search products, add items to the cart, and keep pricing visible without relying on a backend.
+          </p>
+        </div>
+      </section>
+
+      <section className="home__grid" aria-label="Product catalog">
+        {products.map((product) => (
+          <article className="product" key={product.id}>
+            <img src={product.image} alt={product.name} />
+            <div className="product__body">
+              <p className="product__category">{product.category}</p>
+              <h2>{product.name}</h2>
+              <p className="product__rating">Rating {product.rating} / 5</p>
+              <div className="product__footer">
+                <strong>${product.price.toFixed(2)}</strong>
+                <button type="button" onClick={() => onAddToCart(product)}>
+                  Add to cart
+                </button>
+              </div>
+            </div>
+          </article>
+        ))}
+      </section>
+    </main>
+  );
+}
 
 export default Home;
