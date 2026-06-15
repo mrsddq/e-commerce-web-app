@@ -28,6 +28,7 @@ npm start
 - GitHub Actions build workflow
 - product roadmap in [docs/product-roadmap.md](docs/product-roadmap.md)
 - npm lockfile for reproducible installs
+- demo checklist in [docs/DEMO_CHECKLIST.md](docs/DEMO_CHECKLIST.md)
 
 ## Current Limitation
 
