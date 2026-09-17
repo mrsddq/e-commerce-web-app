@@ -1,39 +1,15 @@
-﻿# Engineering Runbook
+# Local verification
 
-## Repository Profile
+Use Node.js 24.15+ with the committed lockfile.
 
-- Repository: $repoName
-- Classification: Frontend/static JavaScript project
-- Tracked files: 23
-- Python files: 0
-- JavaScript/TypeScript files: 5
-- Notebooks: 0
-- Terraform files: 0
+```bash
+cd amazon
+npm ci
+npm test
+npm run build
+npm run dev
+```
 
-## Setup
+Manual check: Search by category, add the same item twice, filter the catalog, and remove each quantity. The cart count and cents total must remain consistent.
 
-``bash
-No package install step is required for the tracked source.
-``
-
-## Verification
-
-``bash
-Review tracked content and run repository-specific checks.
-git status --short
-``
-
-## Release Hygiene
-
-- Keep generated outputs, caches, local datasets, virtual environments, and dependency folders out of git.
-- Prefer deterministic commands over manual notebook or console-only steps.
-- Document required secrets and environment variables instead of committing them.
-- Keep Dockerfiles, CI workflows, and tests aligned with the actual project stack.
-- Treat learning or reference material honestly as reference material; do not present it as production service code unless it has service-grade tests, deployment, and operations docs.
-
-## Maintenance Checklist
-
-- Review dependencies quarterly.
-- Run tests before every push.
-- Confirm git status --short is clean before packaging.
-- Include .git only when an external submission explicitly requires repository history.
+State is local to the tab. A passing build/test suite verifies the frontend; it does not establish a backend service or a live deployment.

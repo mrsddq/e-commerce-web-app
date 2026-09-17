@@ -17,3 +17,7 @@ input {
 .app {
   min-height: 100vh;
 }
+
+.cart { margin: 24px auto; max-width: 1100px; padding: 20px; }
+.cart li { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; }
+.cart button { cursor: pointer; }

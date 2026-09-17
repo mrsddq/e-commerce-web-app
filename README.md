@@ -1,35 +1,40 @@
 # E-Commerce Web App
 
-A small React storefront with searchable product catalog data, add-to-cart state, responsive product cards, and a reproducible build pipeline.
+MarketLab is a React storefront demonstrating a searchable product catalog,
+immutable cart updates, quantity removal, and exact integer-cent pricing.
 
-## Structure
+## Run locally
 
-```text
-amazon/
-  public/
-  src/
-  package.json
-```
-
-## Setup
+Requires Node.js 24.15+ and npm. No credentials or backend are needed.
 
 ```bash
 cd amazon
-npm install
-npm start
+npm ci
+npm test
+npm run build
+npm run dev
 ```
 
-## Implemented Scope
+The Vite development server prints its local URL; `npm run preview` serves the
+production build from `dist/`. The locked dependency graph is shared with CI.
 
-- responsive catalog UI
-- search across product names and categories
-- cart count and cart total state
-- static product data suitable for later API replacement
-- GitHub Actions build workflow
-- product roadmap in [docs/product-roadmap.md](docs/product-roadmap.md)
-- npm lockfile for reproducible installs
-- demo checklist in [docs/DEMO_CHECKLIST.md](docs/DEMO_CHECKLIST.md)
+## Behavior and design
 
-## Current Limitation
+- Search trims whitespace and matches product names or categories without case sensitivity.
+- Adding the same item increments its quantity; removing it decrements one unit and deletes an empty cart line.
+- Search filtering does not change cart contents. An empty catalog result and empty cart have explicit messages.
+- Product prices are stored as integer USD cents; rendering converts to dollars only at the UI boundary.
+- A reducer makes sequential cart transitions independent of captured React state.
+- React Testing Library tests user-visible search, repeated additions, removal, totals, and reducer non-mutation. GitHub Actions runs tests before building.
 
-This is a frontend-only learning app. It does not yet include authentication, payment processing, backend inventory, order persistence, screenshots, or a live deployment URL.
+The `amazon/` folder is retained from the original learning project. The build
+has moved from Create React App to Vite, removing the unused router and Web
+Vitals scaffolding. Product photos load from Unsplash; the state and tests work
+without an image service or API.
+
+## Scope
+
+This is a frontend demonstration. Cart state resets on refresh. It has no
+accounts, server-side price/inventory validation, order storage, checkout, or
+payment processing. Production pricing and order authority would belong on the
+server. It is not a deployed commerce service.

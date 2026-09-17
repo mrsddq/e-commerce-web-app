@@ -1,5 +1,6 @@
 import React from "react";
 import "./Home.css";
+import { formatPrice } from "./cart";
 
 function Home({ products, onAddToCart }) {
   return (
@@ -15,6 +16,7 @@ function Home({ products, onAddToCart }) {
       </section>
 
       <section className="home__grid" aria-label="Product catalog">
+        {products.length === 0 && <p>No products match your search.</p>}
         {products.map((product) => (
           <article className="product" key={product.id}>
             <img src={product.image} alt={product.name} />
@@ -23,8 +25,8 @@ function Home({ products, onAddToCart }) {
               <h2>{product.name}</h2>
               <p className="product__rating">Rating {product.rating} / 5</p>
               <div className="product__footer">
-                <strong>${product.price.toFixed(2)}</strong>
-                <button type="button" onClick={() => onAddToCart(product)}>
+                <strong>{formatPrice(product.priceCents)}</strong>
+                <button type="button" aria-label={`Add ${product.name} to cart`} onClick={() => onAddToCart(product)}>
                   Add to cart
                 </button>
               </div>

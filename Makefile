@@ -1,7 +1,7 @@
-﻿.PHONY: verify clean
-
+.PHONY: install verify clean
+install:
+	cd amazon && npm ci
 verify:
-	git status --short
-
+	cd amazon && npm test && npm run build
 clean:
-	git status --short
+	rm -rf amazon/dist
