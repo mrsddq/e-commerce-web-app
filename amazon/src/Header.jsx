@@ -1,7 +1,8 @@
 import React from "react";
 import "./Header.css";
+import { formatPrice } from "./cart";
 
-function Header({ cartCount, cartTotal, query, onQueryChange }) {
+function Header({ cartCount, cartTotalCents, query, onQueryChange }) {
   return (
     <header className="header">
       <div className="header__brand" aria-label="Storefront home">
@@ -28,7 +29,7 @@ function Header({ cartCount, cartTotal, query, onQueryChange }) {
 
         <div className="header__option">
           <span className="header__optionLineOne">Cart total</span>
-          <span className="header__optionLineTwo">${cartTotal.toFixed(2)}</span>
+          <span className="header__optionLineTwo">{formatPrice(cartTotalCents)}</span>
         </div>
 
         <div className="header__optionBasket" aria-label={`${cartCount} items in cart`}>
